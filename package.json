@@ -1,0 +1,17 @@
+{
+  "name": "num-to-crazy-math",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@cortex-js/compute-engine": "^0.24.1"
+  },
+  "scripts": {
+    "postinstall": "bun run ./src/scripts/postinstall.ts"
+  }
+}
