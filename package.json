@@ -1,5 +1,6 @@
 {
   "name": "crazy-desmos-expressions",
+  "description": "Creates long math expressions that can be evaluated in Desmos to any given number.",
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {

@@ -1,5 +1,7 @@
 # Crazy Desmos Expressions
 
+Creates long math expressions that can be evaluated in Desmos to any given number.
+
 To install dependencies:
 
 ```bash
