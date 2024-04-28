@@ -2,6 +2,8 @@
 
 Creates long math expressions that can be evaluated in Desmos to any given number.
 
+An example expression generated for the number 65 can be found [here](https://www.desmos.com/calculator/25ma3pqmvs).
+
 To install dependencies:
 
 ```bash
