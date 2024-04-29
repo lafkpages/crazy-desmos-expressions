@@ -1,4 +1,5 @@
 import type { SemiBoxedExpression } from "@cortex-js/compute-engine";
+import { anything } from "./generators";
 
 export function shuffle<T extends any[]>(array: T): T {
   for (let i = array.length - 1; i > 0; i--) {
@@ -11,7 +12,7 @@ export function shuffle<T extends any[]>(array: T): T {
   return array;
 }
 
-export function randomVarName(usedVars: Set<string>, subscript = false) {
+export function randomVarName(usedVars: Set<string>, subscript = true) {
   console.debug("randomVarName", usedVars.size);
   if (usedVars.size >= 50 * (subscript ? 10 : 1)) {
     throw new Error("Too many variables");
