@@ -25,7 +25,7 @@ export function randomVarName(subscript = false, autoSubscript = true, _i = 0) {
     (Math.random() < 0.5 ? 97 : 65) + Math.floor(Math.random() * 26)
   );
 
-  if (base == "e" || base == "x") {
+  if (base == "d" || base == "e" || base == "x") {
     return randomVarName(subscript, autoSubscript, _i + 1);
   }
 
