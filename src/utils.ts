@@ -12,10 +12,15 @@ export function shuffle<T extends any[]>(array: T): T {
   return array;
 }
 
-export function randomVarName(subscript = false, autoSubscript = true, _i = 0) {
+export function randomVarName(
+  usedVars: Set<string>,
+  subscript = false,
+  autoSubscript = true,
+  _i = 0
+) {
   if (_i > 100) {
     if (!subscript && autoSubscript) {
-      return randomVarName(true, autoSubscript, 0);
+      return randomVarName(usedVars, true, autoSubscript, 0);
     }
     throw new Error("randomVarName: too many iterations");
   }
@@ -26,10 +31,16 @@ export function randomVarName(subscript = false, autoSubscript = true, _i = 0) {
   );
 
   if (base == "d" || base == "e" || base == "x") {
-    return randomVarName(subscript, autoSubscript, _i + 1);
+    return randomVarName(usedVars, subscript, autoSubscript, _i + 1);
   }
 
   const varName = subscript ? `${base}_{${anything(0, 9, 0)}}` : base;
+
+  if (usedVars.has(varName)) {
+    return randomVarName(usedVars, subscript, autoSubscript, _i + 1);
+  }
+
+  usedVars.add(varName);
   return varName;
 }
 
