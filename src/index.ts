@@ -49,7 +49,7 @@ export function generate(n: number, iters: number) {
   return expr;
 }
 
-if (process.versions.bun && import.meta.main) {
+if (typeof process != "undefined" && process.versions.bun && import.meta.main) {
   const ce = new ComputeEngine();
   let iters = 100;
 
