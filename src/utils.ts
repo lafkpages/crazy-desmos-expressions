@@ -67,5 +67,6 @@ export function latexToDesmosLatex(latex: string | String) {
     .replace(/\\exponentialE/g, " e")
     .replace(/\\l(floor|ceil)/g, "\\operatorname{$1}\\left(")
     .replace(/\\r(floor|ceil)/g, "\\right)")
+    .replace(/\\emptyset/g, "\\left\\{\\right\\}")
     .replace(/\\,/g, "");
 }

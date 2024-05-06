@@ -207,6 +207,14 @@ export const generators: Generator[] = [
       return ["Add", ...shuffle([["Multiply", 3, fourth], fourth])];
     },
   },
+  {
+    accepts(expr) {
+      return expr == 1;
+    },
+    generate() {
+      return "EmptySet";
+    },
+  },
 ];
 
 export function findGenerator(expr: number) {
