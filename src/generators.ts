@@ -4,7 +4,7 @@ import { generate } from ".";
 
 export interface Generator {
   accepts(expr: number): boolean;
-  generate(expr: number, usedVars: Set<string>): SemiBoxedExpression;
+  generate(expr: number): SemiBoxedExpression;
 }
 
 export function anything(min = -100, max = 100, iters = 0) {
@@ -110,8 +110,8 @@ export const generators: Generator[] = [
     accepts() {
       return true;
     },
-    generate(expr, usedVars) {
-      const varName = randomVarName(usedVars);
+    generate(expr) {
+      const varName = randomVarName();
       return [
         "Sum",
         ["Multiply", ...shuffle([expr, varName])],
@@ -123,8 +123,8 @@ export const generators: Generator[] = [
     accepts(expr) {
       return expr % 3 == 0;
     },
-    generate(expr, usedVars) {
-      const varName = randomVarName(usedVars);
+    generate(expr) {
+      const varName = randomVarName();
       const useInts = Math.random() < 0.3;
       return [
         "Sum",
@@ -137,8 +137,8 @@ export const generators: Generator[] = [
     accepts() {
       return true;
     },
-    generate(expr, usedVars) {
-      const varName = randomVarName(usedVars);
+    generate(expr) {
+      const varName = randomVarName();
       return ["Integral", 0, 1, varName, ["Multiply", 2 * expr, varName]];
     },
   },
@@ -146,8 +146,8 @@ export const generators: Generator[] = [
     accepts() {
       return true;
     },
-    generate(expr, usedVars) {
-      const varName = randomVarName(usedVars);
+    generate(expr) {
+      const varName = randomVarName();
       return [
         "Integral",
         -1,

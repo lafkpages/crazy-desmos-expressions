@@ -12,10 +12,12 @@ export function shuffle<T extends any[]>(array: T): T {
   return array;
 }
 
-export function randomVarName(usedVars: Set<string>, subscript = true) {
-  console.debug("randomVarName", usedVars.size);
-  if (usedVars.size >= 50 * (subscript ? 10 : 1)) {
-    throw new Error("Too many variables");
+export function randomVarName(subscript = false, autoSubscript = true, _i = 0) {
+  if (_i > 100) {
+    if (!subscript && autoSubscript) {
+      return randomVarName(true, autoSubscript, 0);
+    }
+    throw new Error("randomVarName: too many iterations");
   }
 
   // random letter, either lowercase or uppercase
@@ -24,20 +26,10 @@ export function randomVarName(usedVars: Set<string>, subscript = true) {
   );
 
   if (base == "e" || base == "x") {
-    return randomVarName(
-      ...(arguments as unknown as Parameters<typeof randomVarName>)
-    );
+    return randomVarName(subscript, autoSubscript, _i + 1);
   }
 
-  const varName = subscript ? `${base}_${anything(0, 9, 0)}` : base;
-
-  if (usedVars.has(varName)) {
-    return randomVarName(
-      ...(arguments as unknown as Parameters<typeof randomVarName>)
-    );
-  }
-
-  usedVars.add(varName);
+  const varName = subscript ? `${base}_{${anything(0, 9, 0)}}` : base;
   return varName;
 }
 
