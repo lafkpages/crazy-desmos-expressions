@@ -1,8 +1,8 @@
 import { type SemiBoxedExpression } from "@cortex-js/compute-engine";
 import { findGenerator } from "./generators";
-import { walkExpression } from "./utils";
+import { latexToDesmosLatex, walkExpression } from "./utils";
 import { ComputeEngine } from "./computeEngine";
-import { latexToDesmosLatex } from "../../desmitos/src/latex";
+
 import type { Generator } from "./generators";
 
 export function generate(n: number, iters: number) {

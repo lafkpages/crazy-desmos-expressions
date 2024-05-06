@@ -53,3 +53,16 @@ export function* walkExpression(
     yield [expr, _i];
   }
 }
+
+// TODO: import from Desmitos shared?
+export function latexToDesmosLatex(latex: string | String) {
+  return latex
+    .replace(/\(/g, "\\left(")
+    .replace(/\)/g, "\\right)")
+    .replace(/\\bot/g, "1\\lt0")
+    .replace(/\\top/g, "1\\gt0")
+    .replace(/\\exponentialE/g, " e")
+    .replace(/\\l(floor|ceil)/g, "\\operatorname{$1}\\left(")
+    .replace(/\\r(floor|ceil)/g, "\\right)")
+    .replace(/\\,/g, "");
+}
