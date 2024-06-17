@@ -4,6 +4,8 @@ export class ComputeEngine extends DefaultComputeEngine {
   constructor(...args: ConstructorParameters<typeof DefaultComputeEngine>) {
     super(...args);
 
+    this.latexOptions.fractionStyle = () => "quotient";
+
     this.latexDictionary = [
       ...this.latexDictionary,
       {
