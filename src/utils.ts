@@ -68,5 +68,10 @@ export function latexToDesmosLatex(latex: string | String) {
     .replace(/\\l(floor|ceil)/g, "\\operatorname{$1}\\left(")
     .replace(/\\r(floor|ceil)/g, "\\right)")
     .replace(/\\emptyset/g, "\\left\\{\\right\\}")
+    .replace(/\\mathrm{d}/g, "d")
+    .replace(/\\operatorname{d}/g, "d")
+    .replace(/\\left\\left/g, "\\left")
+    .replace(/\\right\\right/g, "\\right")
+    .replace(/\\!/g, "")
     .replace(/\\,/g, "");
 }

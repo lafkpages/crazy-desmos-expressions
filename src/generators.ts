@@ -139,7 +139,11 @@ export const generators: Generator[] = [
     },
     generate(expr, usedVars) {
       const varName = randomVarName(usedVars);
-      return ["Integral", 0, 1, varName, ["Multiply", 2 * expr, varName]];
+      return [
+        "Integrate",
+        ["Multiply", 2 * expr, varName],
+        ["Triple", varName, 0, 1],
+      ];
     },
   },
   {
@@ -149,11 +153,9 @@ export const generators: Generator[] = [
     generate(expr, usedVars) {
       const varName = randomVarName(usedVars);
       return [
-        "Integral",
-        -1,
-        1,
-        varName,
-        ["Multiply", expr, ["Absolute", varName]],
+        "Integrate",
+        ["Multiply", expr, ["Abs", varName]],
+        ["Triple", varName, -1, 1],
       ];
     },
   },
