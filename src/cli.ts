@@ -1,7 +1,7 @@
 import type { SemiBoxedExpression } from "@cortex-js/compute-engine";
 import { ComputeEngine } from "./computeEngine";
 import { generate } from ".";
-import { latexToDesmosLatex } from "./utils";
+import { computeEngineLatexToDesmosLatex } from "compute-engine-to-desmos-latex";
 
 const ce = new ComputeEngine();
 let iters = 100;
@@ -33,7 +33,7 @@ const server = Bun.serve({
                 {
                   type: "expression",
                   id: "1",
-                  latex: latexToDesmosLatex(desmosLatexes[index]),
+                  latex: computeEngineLatexToDesmosLatex(desmosLatexes[index]),
                 },
               ],
             },
@@ -67,7 +67,7 @@ for await (const line of console) {
     if (!Bun.deepEquals(mathJson, [])) {
       const box = ce.box(mathJson, { canonical: false });
 
-      const desmosLatex = latexToDesmosLatex(box.latex);
+      const desmosLatex = computeEngineLatexToDesmosLatex(box.latex);
       console.log("Desmos LaTeX (boxed):", desmosLatex);
       desmosLatexes.push(desmosLatex);
 

@@ -10,9 +10,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@cortex-js/compute-engine": "^0.24.1"
-  },
-  "scripts": {
-    "postinstall": "bun run ./src/scripts/postinstall.ts"
+    "@cortex-js/compute-engine": "^0.24.1",
+    "compute-engine-to-desmos-latex": "^0.0.1"
   }
 }
